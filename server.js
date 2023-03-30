@@ -1,8 +1,8 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express');
 const connectToDB = require('./database/db')
 const ErrorMiddleware = require('./middleware/mongooseErrorHandler')
-
+const authRoutes = require('./routes/authRoutes');
 process.on("uncaughtException", (error) => {
   console.log("Uncaught Exception..... stopping the server ....");
   console.log(error.name, error.message);
@@ -22,6 +22,8 @@ app.get('/', (req, res) => {
     message:`Welocme to 2FA`
   })
 });
+
+app.use("/api/v1", authRoutes)
 
 // Error Middleware
 app.use(ErrorMiddleware);
