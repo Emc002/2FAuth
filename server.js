@@ -1,6 +1,13 @@
 require("dotenv").config();
 const express = require('express');
 const connectToDB = require('./database/db')
+const ErrorMiddleware = require('./middleware/mongooseErrorHandler')
+
+process.on("uncaughtException", (error) => {
+  console.log("Uncaught Exception..... stopping the server ....");
+  console.log(error.name, error.message);
+  process.exit(1);
+})
 
 const app = express();
 
@@ -16,5 +23,16 @@ app.get('/', (req, res) => {
   })
 });
 
+// Error Middleware
+app.use(ErrorMiddleware);
 
-app.listen(PORT, console.log(`Server listening on PORT : ${PORT}....`))
+
+const server  = app.listen(PORT, console.log(`Server listening on PORT : ${PORT}....`))
+
+process.on("unhandledRejection", (error) => {
+  console.log("Unhandled Rejection..... stopping the server ....");
+  console.log(error.name, error.message);
+  server.close( () => {
+    process.exit(1);
+  });
+});
