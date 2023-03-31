@@ -18,4 +18,4 @@
 
 # GET http://localhost:4000/api/v1/logout
 
-
+POST http://localhost:4000/api/v1//2fa/generate

@@ -30,6 +30,10 @@ const UserSchema = new mongoose.Schema({
       },
       message: "password is not same"
     },
+  },
+  twoFactorAuthCode: String,
+  twoFactorAuthEnabled: {
+    type: Boolean,
   }
 })
 
