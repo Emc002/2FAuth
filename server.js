@@ -1,10 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const cokkieParser = require('cookie-parser ')
 const connectToDB = require('./database/db')
 const ErrorMiddleware = require('./middleware/mongooseErrorHandler')
 const authRoutes = require('./routes/authRoutes');
-const { cookie } = require('express/lib/response');
 const cookieParser = require('cookie-parser');
 process.on("uncaughtException", (error) => {
   console.log("Uncaught Exception..... stopping the server ....");
