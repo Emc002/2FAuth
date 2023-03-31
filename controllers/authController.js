@@ -24,7 +24,7 @@ const cookieTokenResponse = ( user, statusCode, res) => {
 
 // Register user
 
-exports.registeruser = asyncWrapper( async ( req, res, next ) => {
+exports.registerUser = asyncWrapper( async ( req, res, next ) => {
   const { name, email, password, confirmPassword } = req.body;
 
   const newUser = await User.create({

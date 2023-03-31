@@ -2,6 +2,8 @@ POST http://localhost:4000/api/v1/register
 Content-Type: application/json
 
 {
-  "userID": "58e083bf-fb5e-4a6d-bdcd-0286dcd12934",
-  "token": "681364"
+  "name": "alif",
+  "email": "alif@gmail.com",
+  "password": "123123123",
+  "confirmPassword": "123123123"
 }

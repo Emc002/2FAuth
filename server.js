@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
+const cokkieParser = require('cookie-parser ')
 const connectToDB = require('./database/db')
 const ErrorMiddleware = require('./middleware/mongooseErrorHandler')
 const authRoutes = require('./routes/authRoutes');
+const { cookie } = require('express/lib/response');
+const cookieParser = require('cookie-parser');
 process.on("uncaughtException", (error) => {
   console.log("Uncaught Exception..... stopping the server ....");
   console.log(error.name, error.message);
@@ -14,6 +17,7 @@ const app = express();
 connectToDB();
 
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 
