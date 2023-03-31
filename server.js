@@ -3,7 +3,9 @@ const express = require('express');
 const connectToDB = require('./database/db')
 const ErrorMiddleware = require('./middleware/mongooseErrorHandler')
 const authRoutes = require('./routes/authRoutes');
-const cookieParser = require('cookie-parser');
+const cookieParsera = require('cookie-parser');
+
+
 process.on("uncaughtException", (error) => {
   console.log("Uncaught Exception..... stopping the server ....");
   console.log(error.name, error.message);
@@ -15,7 +17,7 @@ const app = express();
 connectToDB();
 
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParsera());
 
 const PORT = process.env.PORT || 5000;
 

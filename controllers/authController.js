@@ -51,7 +51,7 @@ exports.loginUser = asyncWrapper( async (req, res, next) => {
 
   const user = await User.findOne({ email }).select("+password");
 
-  if (!user || ( await user.correctPassword(password, user.password))) {
+  if (!user || !( await user.correctPassword(password, user.password))) {
       return next(
         new TwoFactorError ("Incorect email or password", 401)
       )

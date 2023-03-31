@@ -2,10 +2,16 @@
 # Content-Type: application/json
 
 # {
-#   "name": "alif",
-#   "email": "alif@gmail.com",
+#   "name": "nafis",
+#   "email": "nafis@gmail.com",
 #   "password": "123123123",
 #   "confirmPassword": "123123123"
 # }
 
 POST http://localhost:4000/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "nafis@gmail.com",
+  "password": "123123123"
+}
